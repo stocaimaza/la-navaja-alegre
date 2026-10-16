@@ -1,0 +1,27 @@
+.barra {
+  padding: 16px 24px;
+  background: #1b2033;
+  color: #f5f3ef;
+}
+
+.barra h1 { margin: 0; font-size: 1.6rem; }
+.barra p { margin: 4px 0 0; color: #c9cde0; }
+
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+}
+
+@media (max-width: 760px) {
+  .contenido { grid-template-columns: 1fr; }
+}
+
+.pendiente {
+  padding: 12px;
+  border: 2px dashed #b8b2a6;
+  border-radius: 8px;
+  color: #6b7080;
+}

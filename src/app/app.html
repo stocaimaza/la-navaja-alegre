@@ -1,0 +1,42 @@
+<!-- ============================================================
+     APP.HTML: acá se integran los componentes de cada alumno
+     ============================================================
+     Lo mantiene el líder técnico. Cuando se mergea un pull request,
+     se reemplaza el cartel "Pendiente" por la etiqueta del componente. -->
+
+<header class="barra">
+  <h1>💈 La Navaja Alegre</h1>
+  <p>Turnos de la barbería</p>
+</header>
+
+<main class="contenido">
+  <section>
+    <!-- PENDIENTE · resumen:
+         <app-resumen [turnos]="turnos" /> -->
+    <p class="pendiente">Pendiente: resumen ({{ turnos.length }} turnos cargados)</p>
+
+    <!-- PENDIENTE · lista-turnos (usa turno-item adentro):
+         <app-lista-turnos
+           [turnos]="turnos"
+           (atender)="atender($event)"
+           (cancelar)="cancelar($event)"
+           (eliminar)="eliminar($event)"
+           (editar)="empezarEdicion($event)" /> -->
+    <p class="pendiente">Pendiente: lista de turnos</p>
+  </section>
+
+  <aside>
+    @if (turnoEnEdicion) {
+      <!-- PENDIENTE · editar-turno:
+           <app-editar-turno
+             [turno]="turnoEnEdicion"
+             (guardar)="guardarEdicion($event)"
+             (descartar)="cancelarEdicion()" /> -->
+      <p class="pendiente">Pendiente: editar turno de {{ turnoEnEdicion.cliente }}</p>
+    } @else {
+      <!-- PENDIENTE · turno-form:
+           <app-turno-form [turnos]="turnos" (nuevo)="agregar($event)" /> -->
+      <p class="pendiente">Pendiente: formulario de nuevo turno</p>
+    }
+  </aside>
+</main>
