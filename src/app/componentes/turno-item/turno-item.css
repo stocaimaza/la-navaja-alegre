@@ -1,0 +1,72 @@
+.tarjeta {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e4dfd6;
+  border-radius: 8px;
+}
+
+.datos h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.datos p {
+  margin: 0 0 4px;
+}
+
+.estado {
+  text-transform: capitalize;
+}
+
+.tarjeta.atendido {
+  background: #e7f6ec;
+  border-color: #8fceb0;
+  color: #1f7a3a;
+}
+
+.tarjeta.cancelado {
+  background: #f0f0f2;
+  border-color: #d5d7de;
+  color: #8a8f9c;
+}
+
+.tarjeta.cancelado .datos {
+  text-decoration: line-through;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.atender {
+  background: #1f7a3a;
+  color: #fff;
+}
+
+.cancelar {
+  background: #c45c26;
+  color: #fff;
+}
+
+.editar {
+  background: #1b2033;
+  color: #fff;
+}
+
+.eliminar {
+  background: #fff;
+  color: #8b3030;
+  border: 1px solid #e0b4b4;
+}
