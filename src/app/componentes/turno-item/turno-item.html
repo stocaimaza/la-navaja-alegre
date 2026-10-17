@@ -1,0 +1,21 @@
+<article
+  class="tarjeta"
+  [class.atendido]="turno.estado === 'atendido'"
+  [class.cancelado]="turno.estado === 'cancelado'"
+>
+  <div class="datos">
+    <h2>{{ turno.cliente }}</h2>
+    <p>{{ turno.servicio }}</p>
+    <p>{{ turno.dia }} · {{ turno.hora }}</p>
+    <p class="estado">{{ turno.estado }}</p>
+  </div>
+
+  <div class="botones">
+    @if (turno.estado === 'pendiente') {
+      <button type="button" class="atender" (click)="atenderTurno()">Atender</button>
+      <button type="button" class="cancelar" (click)="cancelarTurno()">Cancelar</button>
+    }
+    <button type="button" class="editar" (click)="editarTurno()">Editar</button>
+    <button type="button" class="eliminar" (click)="eliminarTurno()">Eliminar</button>
+  </div>
+</article>
