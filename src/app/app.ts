@@ -11,10 +11,10 @@
 import { Component } from '@angular/core';
 import { Turno } from './modelos/turno';
 import { TURNOS_INICIALES } from './datos/turnos';
-
+import { TurnoFormComponent } from './componentes/turno-form/turno-form';
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [TurnoFormComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

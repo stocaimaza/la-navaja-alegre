@@ -25,18 +25,12 @@
     <p class="pendiente">Pendiente: lista de turnos</p>
   </section>
 
-  <aside>
-    @if (turnoEnEdicion) {
-      <!-- PENDIENTE · editar-turno:
-           <app-editar-turno
-             [turno]="turnoEnEdicion"
-             (guardar)="guardarEdicion($event)"
-             (descartar)="cancelarEdicion()" /> -->
-      <p class="pendiente">Pendiente: editar turno de {{ turnoEnEdicion.cliente }}</p>
-    } @else {
-      <!-- PENDIENTE · turno-form:
-           <app-turno-form [turnos]="turnos" (nuevo)="agregar($event)" /> -->
-      <p class="pendiente">Pendiente: formulario de nuevo turno</p>
-    }
-  </aside>
+<aside>
+  @if (turnoEnEdicion) {
+    <!-- PENDIENTE · editar-turno -->
+    ...
+  } @else {
+    <app-turno-form (agregar)="agregar($event)"></app-turno-form>
+  }
+</aside>
 </main>

@@ -1,0 +1,32 @@
+<div class="formulario-container">
+  <h3>Cargar Nuevo Turno</h3>
+  
+  <form (ngSubmit)="guardarTurno()">
+    <div class="campo">
+      <label for="cliente">Nombre del Cliente:</label>
+      <input type="text" id="cliente" [(ngModel)]="nuevoTurno.cliente" name="cliente" required placeholder="Ej: Juan Pérez">
+    </div>
+
+    <div class="campo">
+      <label for="servicio">Servicio:</label>
+      <select id="servicio" [(ngModel)]="nuevoTurno.servicio" name="servicio" required>
+        <option value="" disabled selected>Selecciona un servicio</option>
+        <option value="Corte de Pelo">Corte de Pelo</option>
+        <option value="Barba">Barba</option>
+        <option value="Corte + Barba">Corte + Barba</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="dia">Día:</label>
+      <input type="text" id="dia" [(ngModel)]="nuevoTurno.dia" name="dia" placeholder="Ej: Lunes" required>
+    </div>
+
+    <div class="campo">
+      <label for="hora">Hora:</label>
+      <input type="text" id="hora" [(ngModel)]="nuevoTurno.hora" name="hora" placeholder="Ej: 15:00" required>
+    </div>
+
+    <button type="submit" class="btn-guardar">Agregar Turno</button>
+  </form>
+</div>
