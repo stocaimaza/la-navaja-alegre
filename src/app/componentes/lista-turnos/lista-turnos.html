@@ -1,0 +1,41 @@
+<div class="lista-turnos-container">
+  <!-- Botones de filtro -->
+  <div class="filtros">
+    <button 
+      [class.activo]="filtroActual === 'todos'" 
+      (click)="setFiltro('todos')">
+      Todos
+    </button>
+    <button 
+      [class.activo]="filtroActual === 'pendiente'" 
+      (click)="setFiltro('pendiente')">
+      Pendientes
+    </button>
+    <button 
+      [class.activo]="filtroActual === 'atendido'" 
+      (click)="setFiltro('atendido')">
+      Atendidos
+    </button>
+    <button 
+      [class.activo]="filtroActual === 'cancelado'" 
+      (click)="setFiltro('cancelado')">
+      Cancelados
+    </button>
+  </div>
+
+  <!-- Lista con @for y @empty -->
+  <div class="turnos-lista">
+    @for (turno of turnosFiltrados; track turno.id) {
+      <!-- Vista provisoria mientras se integra el componente de Gabriela -->
+      <div class="turno-provisorio">
+        <p><strong>{{ turno.cliente }}</strong> - {{ turno.servicio }} ({{ turno.estado }})</p>
+        <button (click)="atender.emit(turno.id)">Atender</button>
+        <button (click)="cancelar.emit(turno.id)">Cancelar</button>
+        <button (click)="editar.emit(turno.id)">Editar</button>
+        <button (click)="eliminar.emit(turno.id)">Eliminar</button>
+      </div>
+    } @empty {
+      <p class="sin-turnos">No hay turnos</p>[cite: 6]
+    }
+  </div>
+</div>
