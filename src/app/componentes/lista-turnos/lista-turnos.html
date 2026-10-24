@@ -29,10 +29,10 @@
       <!-- Vista provisoria mientras se integra el componente de Gabriela -->
       <div class="turno-provisorio">
         <p><strong>{{ turno.cliente }}</strong> - {{ turno.servicio }} ({{ turno.estado }})</p>
-        <button (click)="atender.emit(turno.id)">Atender</button>
-        <button (click)="cancelar.emit(turno.id)">Cancelar</button>
-        <button (click)="editar.emit(turno.id)">Editar</button>
-        <button (click)="eliminar.emit(turno.id)">Eliminar</button>
+        <button (click)="turnosService.atender(turno.id)">Atender</button>
+        <button (click)="turnosService.cancelar(turno.id)">Cancelar</button>
+        <button (click)="turnosService.empezarEdicion(turno.id)">Editar</button>
+        <button (click)="turnosService.eliminar(turno.id)">Eliminar</button>
       </div>
     } @empty {
       <p class="sin-turnos">No hay turnos</p>[cite: 6]

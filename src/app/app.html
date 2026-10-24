@@ -2,7 +2,9 @@
      APP.HTML: acá se integran los componentes de cada alumno
      ============================================================
      Lo mantiene el líder técnico. Cuando se mergea un pull request,
-     se reemplaza el cartel "Pendiente" por la etiqueta del componente. -->
+     se reemplaza el cartel "Pendiente" por la etiqueta del componente.
+     Los componentes ya no reciben la lista ni avisan con outputs:
+     usan TurnosService directamente. -->
 
 <header class="barra">
   <h1>💈 La Navaja Alegre</h1>
@@ -12,25 +14,21 @@
 <main class="contenido">
   <section>
     <!-- PENDIENTE · resumen:
-         <app-resumen [turnos]="turnos" /> -->
-    <p class="pendiente">Pendiente: resumen ({{ turnos.length }} turnos cargados)</p>
+         <app-resumen /> -->
+    <p class="pendiente">Pendiente: resumen ({{ turnosService.turnos.length }} turnos cargados)</p>
 
     <!-- PENDIENTE · lista-turnos (usa turno-item adentro):
-         <app-lista-turnos
-           [turnos]="turnos"
-           (atender)="atender($event)"
-           (cancelar)="cancelar($event)"
-           (eliminar)="eliminar($event)"
-           (editar)="empezarEdicion($event)" /> -->
+         <app-lista-turnos /> -->
     <p class="pendiente">Pendiente: lista de turnos</p>
   </section>
 
 <aside>
-  @if (turnoEnEdicion) {
-    <!-- PENDIENTE · editar-turno -->
+  @if (turnosService.turnoEnEdicion) {
+    <!-- PENDIENTE · editar-turno:
+         <app-editar-turno [turno]="turnosService.turnoEnEdicion" /> -->
     ...
   } @else {
-    <app-turno-form (agregar)="agregar($event)"></app-turno-form>
+    <app-turno-form />
   }
 </aside>
 </main>

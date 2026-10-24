@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Turno } from '../../modelos/turno';
+import { TurnosService } from '../../servicios/turnos.service';
 
 @Component({
   selector: 'app-turno-item',
@@ -10,24 +11,21 @@ import { Turno } from '../../modelos/turno';
 export class TurnoItem {
   @Input({ required: true }) turno!: Turno;
 
-  @Output() atender = new EventEmitter<number>();
-  @Output() cancelar = new EventEmitter<number>();
-  @Output() eliminar = new EventEmitter<number>();
-  @Output() editar = new EventEmitter<number>();
+  private turnosService = inject(TurnosService);
 
   atenderTurno() {
-    this.atender.emit(this.turno.id);
+    this.turnosService.atender(this.turno.id);
   }
 
   cancelarTurno() {
-    this.cancelar.emit(this.turno.id);
+    this.turnosService.cancelar(this.turno.id);
   }
 
   eliminarTurno() {
-    this.eliminar.emit(this.turno.id);
+    this.turnosService.eliminar(this.turno.id);
   }
 
   editarTurno() {
-    this.editar.emit(this.turno.id);
+    this.turnosService.empezarEdicion(this.turno.id);
   }
 }

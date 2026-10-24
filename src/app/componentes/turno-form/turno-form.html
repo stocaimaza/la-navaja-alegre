@@ -11,9 +11,9 @@
       <label for="servicio">Servicio:</label>
       <select id="servicio" [(ngModel)]="nuevoTurno.servicio" name="servicio" required>
         <option value="" disabled selected>Selecciona un servicio</option>
-        <option value="Corte de Pelo">Corte de Pelo</option>
-        <option value="Barba">Barba</option>
-        <option value="Corte + Barba">Corte + Barba</option>
+        @for (servicio of servicios; track servicio) {
+          <option [value]="servicio">{{ servicio }}</option>
+        }
       </select>
     </div>
 

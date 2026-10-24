@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Turno } from '../../modelos/turno';
+import { TurnosService } from '../../servicios/turnos.service';
 
 @Component({
   selector: 'app-editar-turno',
@@ -11,8 +12,7 @@ import { Turno } from '../../modelos/turno';
 export class EditarTurno implements OnChanges {
   @Input({ required: true }) turno!: Turno;
 
-  @Output() guardar = new EventEmitter<Turno>();
-  @Output() descartar = new EventEmitter<void>();
+  private turnosService = inject(TurnosService);
 
   copia!: Turno;
 
@@ -21,10 +21,10 @@ export class EditarTurno implements OnChanges {
   }
 
   onGuardar(): void {
-    this.guardar.emit({ ...this.copia });
+    this.turnosService.guardarEdicion({ ...this.copia });
   }
 
   onDescartar(): void {
-    this.descartar.emit();
+    this.turnosService.cancelarEdicion();
   }
 }

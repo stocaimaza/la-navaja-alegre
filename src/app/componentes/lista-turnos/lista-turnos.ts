@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Turno } from '../../modelos/turno';
+import { TurnosService } from '../../servicios/turnos.service';
 
 
 @Component({
@@ -12,12 +13,8 @@ import { Turno } from '../../modelos/turno';
 
 })
 export class ListaTurnosComponent {
-  @Input({ required: true }) turnos!: Turno[];
-
-  @Output() atender = new EventEmitter<number>();
-  @Output() cancelar = new EventEmitter<number>();
-  @Output() eliminar = new EventEmitter<number>();
-  @Output() editar = new EventEmitter<number>();
+  // Público para usar atender/cancelar/editar/eliminar desde el html
+  turnosService = inject(TurnosService);
 
   filtroActual: string = 'todos';
 
@@ -26,9 +23,10 @@ export class ListaTurnosComponent {
   }
 
   get turnosFiltrados(): Turno[] {
+    const turnos = this.turnosService.turnos;
     if (this.filtroActual === 'todos') {
-      return this.turnos;
+      return turnos;
     }
-    return this.turnos.filter(t => t.estado === this.filtroActual);
+    return turnos.filter(t => t.estado === this.filtroActual);
   }
 }
